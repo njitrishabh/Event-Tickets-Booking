@@ -11,3 +11,5 @@ Payment methods integration
 SEO enabled
 Share events link on social media
 Multilingual website in English and French
+Search Event feature
+Backend APIs using GraphQL
