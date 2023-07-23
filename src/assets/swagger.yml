@@ -1,0 +1,213 @@
+openapi: 3.0.3
+info:
+  title: Eventsmaster - OpenAPI 3.0
+  description: Concerts, sports, live events ticket booking online
+  version: 1.0.11
+servers:
+  - url: https://eventsmaster.com/api
+tags:
+  - name: events
+paths:
+  /search:
+    get:
+      tags:
+        - events
+      summary: search for events based on keyword
+      parameters:
+        - name: eventName
+          in: query
+          description: Name of the event
+          required: false
+          schema:
+            type: string
+        - name: artist
+          in: query
+          description: Name of the artist
+          required: false
+          schema:
+            type: string
+        - name: venue
+          in: query
+          description: Name of the venue
+          required: false
+          schema:
+            type: string
+        - name: eventGenre
+          in: query
+          description: Name of the genre
+          required: false
+          schema:
+            type: string
+        - name: country
+          in: query
+          description: Name of the country
+          required: false
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+            format: date-time
+          description: >
+            The start date for the event.
+        - name: end_date
+          in: query
+          schema:
+            type: string
+            format: date-time
+          description: >
+            The end date for the event. Must be used together with `start_date`.
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/searchResult"
+        "400":
+          description: Bad Request
+        "404":
+          description: Event not found
+  /events/{id}:
+    get:
+      tags:
+        - events
+      summary: Find event by ID
+      description: Returns an event detail
+      parameters:
+        - name: id
+          in: path
+          description: ID of event to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EventsById"
+        "400":
+          description: Invalid Id provided
+        "404":
+          description: Event not found
+components:
+  schemas:
+    searchResult:
+      type: object
+      properties:
+        events:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              id:
+                type: string
+              url:
+                type: string
+              locale:
+                type: string
+              image:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+              genre:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+              venues:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  id:
+                    type: string
+                  timezone:
+                    type: string
+                  city:
+                    type: string
+                  state:
+                    type: string
+                  country:
+                    type: string
+                  address:
+                    type: string
+                  longitude:
+                    type: string
+                  latitude:
+                    type: string
+              artist:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  id:
+                    type: string
+                  images:
+                    type: string
+    EventsById:
+      type: object
+      properties:
+        name:
+          type: string
+        id:
+          type: string
+        url:
+          type: string
+        locale:
+          type: string
+        image:
+          type: string
+        startDate:
+          type: string
+        endDate:
+          type: string
+        genre:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+        venues:
+          type: object
+          properties:
+            name:
+              type: string
+            id:
+              type: string
+            timezone:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+            country:
+              type: string
+            address:
+              type: string
+            longitude:
+              type: string
+            latitude:
+              type: string
+        artist:
+          type: object
+          properties:
+            name:
+              type: string
+            id:
+              type: string
+            images:
+              type: string
