@@ -38,3 +38,7 @@ GET: url: "https://eventsmaster.com/api/events/{id}"
 Data model:
 
 API design:
+
+## Note:
+1 event can have 1 venue, multiple artists and 1 genre.
+1 artist has 1 genre.

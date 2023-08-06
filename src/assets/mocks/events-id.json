@@ -10,7 +10,7 @@
     "id": "KnvZfZ7vAdt",
     "name": "Golf"
   },
-  "venues": {
+  "venue": {
     "name": "Trump National Doral",
     "id": "KovZpZAaEldA",
     "timezone": "America/New_York",
@@ -21,9 +21,15 @@
     "longitude": "-80.33854298",
     "latitude": "25.81260379"
   },
-  "artist": {
-    "name": "Taylor Swift",
-    "id": "K8vZ917uc57",
-    "images": "taylor.jpg"
-  }
+  "artists": [
+    {
+      "name": "Taylor Swift",
+      "id": "K8vZ917uc57",
+      "images": "taylor.jpg",
+      "genre": {
+        "id": "KnvZfZ7vAdE",
+        "name": "Football"
+      }
+    }
+  ]
 }

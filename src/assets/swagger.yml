@@ -127,7 +127,7 @@ components:
                     type: string
                   name:
                     type: string
-              venues:
+              venue:
                 type: object
                 properties:
                   name:
@@ -148,15 +148,24 @@ components:
                     type: string
                   latitude:
                     type: string
-              artist:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  id:
-                    type: string
-                  images:
-                    type: string
+              artists:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    id:
+                      type: string
+                    images:
+                      type: string
+                    genre:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
     EventsById:
       type: object
       properties:
@@ -181,7 +190,7 @@ components:
               type: string
             name:
               type: string
-        venues:
+        venue:
           type: object
           properties:
             name:
@@ -202,12 +211,21 @@ components:
               type: string
             latitude:
               type: string
-        artist:
-          type: object
-          properties:
-            name:
-              type: string
-            id:
-              type: string
-            images:
-              type: string
+        artists:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              id:
+                type: string
+              images:
+                type: string
+              genre:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
