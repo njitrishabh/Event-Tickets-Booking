@@ -1,7 +1,8 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { AppHeaderComponent } from 'src/app/header/app-header';
+import { HeaderComponent } from './core/components/header/header.component';
+import { FooterComponent } from './core/components/footer/footer.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -11,27 +12,28 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
-        AppHeaderComponent
+        HeaderComponent,
+        FooterComponent
       ],
     }).compileComponents();
   });
 
-  it('should create the app', () => {
+  test('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'event-tickets-booking'`, () => {
+  test(`should have as title 'event-tickets-booking'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
+    const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('event-tickets-booking');
   });
 
-  it('should render title', () => {
+  test('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Event Booking');
+    expect(compiled.querySelector('h1')?.textContent).toContain('event-tickets-booking');
   });
 });
